@@ -16,11 +16,11 @@ pipeline {
             }
         }
 
-        stage('Build Image') {
-            steps {
-                sh 'docker build -t myapp .'
-            }
-        }
+      stage('Build Image') {
+    steps {
+        sh 'docker build -t myapp my-first-pipeline/'
+    }
+}
 
         stage('Deploy') {
             steps {
