@@ -1,23 +1,31 @@
 pipeline {
-  agent any
+    agent any
 
-  stages {
-    stage('Test') {
-      steps {
-        sh 'node --version'
-      }
-    }
+    stages {
 
-    stage('Build Image') {
-      steps {
-        sh 'docker build -t myapp .'
-      }
-    }
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
 
-    stage('Deploy') {
-      steps {
-        sh 'docker run -d -p 3000:3000 myapp'
-      }
+        stage('Debug') {
+            steps {
+                sh 'pwd'
+                sh 'ls -la'
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                sh 'docker build -t myapp .'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+            }
+        }
     }
-  }
 }
